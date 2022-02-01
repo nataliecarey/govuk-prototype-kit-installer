@@ -1,0 +1,30 @@
+{% extends 'templates/default.njk' %}
+{% block twoThirdsContent %}
+  <form action="?" method="post">
+    {{ govukRadios({
+      idPrefix: "latest-or-specific",
+      name: "latest-or-specific",
+      fieldset: {
+        legend: {
+          text: "Do you want the latest version?",
+          isPageTitle: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "latest",
+          text: "Use the latest release (" + latestRelease.tag_name + ")"
+        },
+        {
+          value: "specific",
+          text: "Choose a specific release"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}

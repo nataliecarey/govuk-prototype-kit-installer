@@ -1,0 +1,62 @@
+{% extends 'templates/default.njk' %}
+
+{% block twoThirdsContent %}
+  {% if isMissingError %}
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The service name is required",
+          href: "#service-name"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  <form action="?" method="post">
+    <input type="hidden" name="dir" value="{{ dir }}">
+
+    {{ govukCheckboxes({
+      idPrefix: "extensions",
+      name: "extensions",
+      fieldset: {
+        legend: {
+          text: "Which extensions would you like to install?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Extensions can be added at any time, they will add specific functionality.  For example if you're working with HMRC you should chose HMRC Frontend."
+      },
+      items: [
+        {
+          value: "hmrc-frontend",
+          text: "HMRC Frontend",
+          hint: {
+            text: "This allows you to use components from the HMRC Design System."
+          }
+        },
+        {
+          value: "hmcts-frontend",
+          text: "HMCTS Frontend",
+          hint: {
+            text: "This is for developers in Her Majesty's Courts and Tribunals."
+          }
+        },
+        {
+          value: "prototype-navigation-radios",
+          text: "Prototype Navigation Radios",
+          hint: {
+          text: "This makes it easier to create navigation radios inside your prototype."
+        }
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

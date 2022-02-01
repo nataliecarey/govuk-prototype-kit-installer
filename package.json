@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "govuk-frontend": "^4.0.0",
+    "marked": "^4.0.12",
+    "nunjucks": "^3.2.3",
+    "open": "^8.4.0",
+    "sass": "^1.49.0"
+  }
+}

@@ -1,0 +1,30 @@
+{% extends 'templates/default.njk' %}
+{% block twoThirdsContent %}
+<form action="?" method="post">
+    {{ govukRadios({
+        idPrefix: "new-or-existing",
+        name: "new-or-existing",
+        fieldset: {
+            legend: {
+                text: "What do you want to do?",
+                isPageTitle: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        items: [
+            {
+                value: "new",
+                text: "Create a new prototype"
+            },
+            {
+                value: "existing",
+                text: "Manage an existing prototype"
+            }
+        ]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+    }) }}
+</form>
+{% endblock %}

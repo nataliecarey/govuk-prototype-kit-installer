@@ -1,0 +1,42 @@
+{% extends 'templates/default.njk' %}
+
+{% block twoThirdsContent %}
+  <form action="?" method="post">
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "confirm",
+      name: "confirm",
+      fieldset: {
+        legend: {
+          text: "Are you sure you want to install " + version + "?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "The release notes for this version are available below."
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+  <h2 class="govuk-heading-l">
+    Release notes for {{ version }}
+  </h2>
+  {{ govukInsetText({
+    html: releaseNotes
+  }) }}
+
+{% endblock %}

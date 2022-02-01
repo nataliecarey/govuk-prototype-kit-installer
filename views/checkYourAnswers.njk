@@ -1,0 +1,31 @@
+{% extends 'templates/default.njk' %}
+
+{% block twoThirdsContent %}
+  <h1 class="govuk-heading-l">Check your answers before installing</h1>
+
+  <h2 class="govuk-heading-m">Personal details</h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: preparedRows
+  }) }}
+
+
+
+  <h2 class="govuk-heading-m">Now create your prototype kit</h2>
+
+  <p class="govuk-body">By submitting this form you will create a new prototype, you'll be able to change
+    the configuration later but it's worth giving the information you have provided
+    one last check before you go ahead.</p>
+
+  <form action="?" method="post" novalidate>
+
+    <input type="hidden" name="answers-checked" value="true">
+
+    {{ govukButton({
+      text: "Create prototype"
+    }) }}
+
+  </form>
+
+{% endblock %}

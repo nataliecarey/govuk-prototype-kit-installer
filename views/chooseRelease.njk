@@ -1,0 +1,21 @@
+{% extends 'templates/default.njk' %}
+{% block twoThirdsContent %}
+  <form action="?" method="post">
+    {{ govukRadios({
+      idPrefix: "release",
+      name: "release",
+      fieldset: {
+        legend: {
+          text: "Which release would you like to use?",
+          isPageTitle: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: preparedReleaseItems
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'templates/default.njk' %}
+{% block twoThirdsContent %}
+  {% if isNonEmptyError %}
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The directory must be empty, you could create an empty directory.",
+          href: "#dir"
+        }
+      ]
+    }) }}
+  {% endif %}
+  <form action="?" method="post">
+    <input type="hidden" name="cwd" value="{{ cwd }}">
+    {{ govukRadios({
+      idPrefix: "dir",
+      name: "dir",
+      hint: {
+        html: "You are currently viewing directories inside <code>" + cwd + "</code>"
+      },
+      errorMessage: {text: "The directory must be empty, you could create an empty directory."} if isMissingError,
+      fieldset: {
+        legend: {
+          text: "Which directory would you like to install into?",
+          isPageTitle: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: preparedDirItems
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}

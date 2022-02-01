@@ -1,0 +1,35 @@
+{% extends 'templates/default.njk' %}
+
+{% block twoThirdsContent %}
+  {% if isMissingError %}
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The service name is required",
+          href: "#service-name"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  <form action="?" method="post">
+
+    {{ govukInput({
+      label: {
+        text: "What is the name of the service you are prototyping?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      id: "service-name",
+      name: "service-name",
+      errorMessage: {text: "The service name is required"} if isMissingError
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

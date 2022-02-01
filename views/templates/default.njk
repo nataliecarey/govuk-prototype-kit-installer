@@ -1,0 +1,50 @@
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% block head %}
+  <link href="/assets/all.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: 'GOVUK Prototype Kit Installer',
+    serviceUrl: '/'
+  }) }}
+{% endblock %}
+
+{% block beforetwoThirdsContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="https://github.com/natcarey/govuk-prototype-kit-installer/issues">feedback</a> will help us to improve it.'
+  }) }}
+
+  {% if backLink %}
+    {{ govukBackLink({
+      text: "Back",
+      href: backLink
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% block twoThirdsContent %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/assets/all.js"></script>
+  <script>window.GOVUKFrontend.initAll()</script>
+{% endblock %}

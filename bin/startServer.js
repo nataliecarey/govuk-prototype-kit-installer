@@ -1,21 +1,26 @@
-import {stat, readFile, writeFile} from 'fs'
-import {readdir, mkdir} from 'fs/promises'
-import {join, dirname, sep} from 'path'
-import {fileURLToPath} from 'url'
-import {get} from 'https'
-import {marked} from 'marked'
-import open from 'open'
-import sass from 'sass'
-import nunjucks from 'nunjucks'
-import express from 'express'
-import bodyParser from 'body-parser'
+const stat = require('fs').stat
+const readFile = require('fs').readFile
+const writeFile = require('fs').writeFile
+const readdir = require('fs').promises.readdir
+const mkdir = require('fs').promises.mkdir
+const join = require('path').join
+const dirname = require('path').dirname
+const sep = require('path').sep
+const fileURLToPath = require('url').fileURLToPath
+const get = require('https').get
+const marked = require('marked')
+const open = require('open')
+const sass = require('sass')
+const nunjucks = require('nunjucks')
+const express = require('express')
+const bodyParser = require('body-parser')
 
 const userHome = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
 const configFile = process.env.GOVUK_PROTOTYPE_KIT_INIT_CONFIG_FILE || join(userHome, '.govuk-prototype-kit-init.config.json')
 const configFileParent = join('configFile', '..')
 const app = express()
 const port = process.env.PORT || 0
-const rootDir = dirname(fileURLToPath(import.meta.url));
+const rootDir = join(__dirname, '..')//dirname(fileURLToPath(import.meta.url));
 
 app.use(bodyParser.urlencoded({extended: false}))
 

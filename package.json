@@ -1,6 +1,6 @@
 {
   "name": "natalie-govuk-prototype-kit-installer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "dependencies": {
     "body-parser": "^1.19.1",
@@ -11,7 +11,10 @@
     "open": "^8.4.0",
     "sass": "^1.49.0"
   },
+  "scripts": {
+    "start": "node bin/startServer.js"
+  },
   "bin": {
-    "natalie-govuk-prototype-kit-installer": "startServer.js"
+    "natalie-govuk-prototype-kit-installer": "node bin/startServer.js"
   }
 }

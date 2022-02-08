@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const stat = require('fs').stat
 const readFile = require('fs').readFile
 const writeFile = require('fs').writeFile
